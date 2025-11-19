@@ -1,61 +1,92 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Mail, Github, Linkedin, FileText } from "lucide-react"
+"use client";
+
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Mail, Linkedin, FileText } from "lucide-react";
+import GlassIcons from "./GlassIcons";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export function Contact() {
+  const { ref, isVisible } = useScrollAnimation();
+
+  const contactIcons = [
+    {
+      icon: <Mail className="w-full h-full" />,
+      color: "blue",
+      label: "Email",
+      href: "mailto:yjasani@asu.edu",
+    },
+    {
+      icon: <Linkedin className="w-full h-full" />,
+      color: "indigo",
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/yashvi-jasani-26614723a",
+      target: "_blank",
+    },
+    {
+      icon: <FileText className="w-full h-full" />,
+      color: "purple",
+      label: "Resume",
+      href: "/resume.pdf",
+      target: "_blank",
+    },
+  ];
+
   return (
-    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
+    <section id="contact" ref={ref} className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-2xl mx-auto text-center">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-balance">
-          <span className="text-primary font-mono text-lg">05.</span> Get In Touch
+        <h2
+          className={`text-3xl sm:text-4xl font-bold mb-6 text-balance transition-all duration-700 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          }`}
+        >
+          Contact Me
         </h2>
 
-        <p className="text-lg text-muted-foreground mb-12 leading-relaxed text-pretty">
-          I'm currently looking for new opportunities and my inbox is always open. Whether you have a question or just
-          want to say hi, I'll try my best to get back to you!
+        <p
+          className={`text-lg text-muted-foreground mb-12 leading-relaxed text-pretty transition-all duration-700 delay-200 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          }`}
+        >
+          I'm currently looking for new opportunities and my inbox is always
+          open. Whether you have a question or just want to say hi, I'll try my
+          best to get back to you!
         </p>
 
-        <Card className="mb-8">
+        <Card
+          className={`mb-8 transition-all duration-700 delay-300 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
           <CardHeader>
             <CardTitle>Let's Connect</CardTitle>
-            <CardDescription>Feel free to reach out through any of these channels</CardDescription>
+            <CardDescription>
+              Get to know me better through any of the channels below.
+            </CardDescription>
           </CardHeader>
-          <CardContent className="grid sm:grid-cols-2 gap-4">
-            <Button variant="outline" className="w-full bg-transparent" asChild>
-              <a href="mailto:alex@example.com">
-                <Mail className="h-4 w-4 mr-2" />
-                Email Me
-              </a>
-            </Button>
-            <Button variant="outline" className="w-full bg-transparent" asChild>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-                <Github className="h-4 w-4 mr-2" />
-                GitHub
-              </a>
-            </Button>
-            <Button variant="outline" className="w-full bg-transparent" asChild>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-                <Linkedin className="h-4 w-4 mr-2" />
-                LinkedIn
-              </a>
-            </Button>
-            <Button variant="outline" className="w-full bg-transparent" asChild>
-              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-                <FileText className="h-4 w-4 mr-2" />
-                Resume
-              </a>
-            </Button>
+          <CardContent>
+            <div className="flex justify-center">
+              <GlassIcons items={contactIcons} />
+            </div>
           </CardContent>
         </Card>
 
-        <Button size="lg" asChild>
-          <a href="mailto:alex@example.com">Say Hello</a>
+        <Button
+          size="lg"
+          asChild
+          className={`transition-all duration-700 delay-500 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <a>Say Hello @ yjasani@asu.edu</a>
         </Button>
-
-        <footer className="mt-20 pt-8 border-t border-border">
-          <p className="text-sm text-muted-foreground">Built with Next.js & Tailwind CSS • © 2025 Alex Johnson</p>
-        </footer>
       </div>
     </section>
-  )
+  );
 }
