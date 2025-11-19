@@ -7,10 +7,9 @@ import { Suspense } from "react"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "Alex Johnson - Computer Science Student",
+  title: "Yashvi Jasani - AI Engineer & Software Developer",
   description:
-    "Personal portfolio of Alex Johnson, a computer science student specializing in full-stack web development.",
-  generator: "v0.app",
+    "Personal portfolio of Yashvi Jasani, an AI Engineer and Software Developer specializing in full-stack development and AI-driven systems.",
 }
 
 export default function RootLayout({
