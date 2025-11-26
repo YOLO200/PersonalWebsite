@@ -9,7 +9,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: {
     default:
-      "Yashvi Jasani - Software Developer | AI Engineer | Full Stack Developer",
+      "Yashvi Jasani - AI Engineer | Software Developer | Full Stack Developer",
     template: "%s | Yashvi Jasani - Software Engineer",
   },
   description:
@@ -83,8 +83,40 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Structured data for Google to understand professional profile
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Yashvi Jasani",
+    jobTitle: "Software Engineer",
+    description: "Software Engineer and AI Engineer specializing in full-stack development, machine learning, and cloud technologies",
+    url: "https://yashvijasani.com",
+    alumniOf: {
+      "@type": "CollegeOrUniversity",
+      name: "Arizona State University",
+    },
+    knowsAbout: [
+      "Software Engineering",
+      "Full Stack Development",
+      "Artificial Intelligence",
+      "Machine Learning",
+      "React",
+      "Next.js",
+      "Python",
+      "JavaScript",
+      "TypeScript",
+      "AWS",
+    ],
+  };
+
   return (
     <html lang="en" className="dark">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
         <Suspense fallback={null}>{children}</Suspense>
         <Analytics />
