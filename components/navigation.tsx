@@ -1,157 +1,91 @@
 "use client";
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import GlassSurface from "./GlassSurface";
 
-const navItems = [
-  { name: "Home", href: "#" },
-  { name: "About", href: "#about" },
-  { name: "Works", href: "#projects" },
-  { name: "Skills", href: "#skills" },
-  { name: "Contact", href: "#contact" },
+const links = [
+  { label: "About", href: "#about", num: "01" },
+  { label: "Experience", href: "#experience", num: "02" },
+  { label: "Projects", href: "#projects", num: "03" },
+  { label: "Contact", href: "#contact", num: "04" },
 ];
 
 export function Navigation() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-  const handleScroll = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: string
-  ) => {
-    e.preventDefault();
-    if (href === "#") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } else {
-      const element = document.querySelector(href);
-      if (element) {
-        const offset = 40; // Height of navbar + extra spacing
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth",
-        });
-      }
-    }
-  };
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <nav className="fixed top-6 left-0 right-0 z-50 px-4">
-      <div className="max-w-5xl mx-auto">
-        <GlassSurface
-          width="100%"
-          height="auto"
-          borderRadius={16}
-          brightness={20}
-          opacity={0.3}
-          blur={15}
-          displace={15}
-          distortionScale={-150}
-          backgroundOpacity={0.1}
-          saturation={1.2}
-          className="hidden md:block"
-        >
-          <div className="flex items-center justify-between px-6 py-3">
-            <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }}
-              className="flex items-center justify-center w-10 h-10 bg-primary/10 rounded-lg cursor-pointer"
-            >
-              <span className="font-mono text-lg font-semibold text-primary">
-                YJ
-              </span>
-            </a>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "bg-background/70 backdrop-blur-xl border-b border-border/50"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+        <a href="#" className="font-display font-extrabold text-xl text-foreground">
+          YJ<span className="text-primary">.</span>
+        </a>
 
-            <div className="flex items-center gap-8">
-              {navItems.map((item) => (
+        {/* Desktop */}
+        <div className="hidden md:flex items-center gap-10">
+          {links.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className="text-muted-foreground hover:text-foreground text-sm font-mono tracking-wide transition-colors group flex items-center gap-2"
+            >
+              <span className="text-primary/50 text-[10px] group-hover:text-primary transition-colors">
+                {link.num}
+              </span>
+              {link.label}
+            </a>
+          ))}
+        </div>
+
+        {/* Mobile toggle */}
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="md:hidden text-foreground"
+          aria-label="Toggle menu"
+        >
+          {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        </button>
+      </div>
+
+      {/* Mobile menu */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border overflow-hidden"
+          >
+            <div className="px-6 py-6 space-y-5">
+              {links.map((link) => (
                 <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={(e) => handleScroll(e, item.href)}
-                  className="text-sm text-foreground hover:text-primary transition-colors relative group cursor-pointer"
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="flex items-center gap-3 text-muted-foreground hover:text-foreground text-sm font-mono tracking-wide transition-colors"
                 >
-                  {item.name}
-                  <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
+                  <span className="text-primary/50 text-[10px]">{link.num}</span>
+                  {link.label}
                 </a>
               ))}
             </div>
-          </div>
-        </GlassSurface>
-
-        {/* Mobile Navigation */}
-        <GlassSurface
-          width="100%"
-          height="auto"
-          borderRadius={24}
-          brightness={20}
-          opacity={0.5}
-          blur={15}
-          displace={15}
-          distortionScale={-150}
-          redOffset={5}
-          greenOffset={15}
-          blueOffset={25}
-          mixBlendMode="screen"
-          backgroundOpacity={0.1}
-          saturation={1.2}
-          className="md:hidden"
-        >
-          <div className="px-4 py-3">
-            <div className="flex items-center justify-between">
-              <a
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
-                className="flex items-center justify-center w-10 h-10 bg-primary/10 rounded-lg cursor-pointer"
-              >
-                <span className="font-mono text-base font-semibold text-primary">
-                  YJ
-                </span>
-              </a>
-
-              <Button
-                variant="ghost"
-                size="icon"
-                className="rounded-full"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              >
-                {isMobileMenuOpen ? (
-                  <X className="h-5 w-5" />
-                ) : (
-                  <Menu className="h-5 w-5" />
-                )}
-              </Button>
-            </div>
-
-            {/* Mobile Menu Dropdown */}
-            {isMobileMenuOpen && (
-              <div className="mt-4 pb-2 space-y-3">
-                {navItems.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    onClick={(e) => {
-                      handleScroll(e, item.href);
-                      setIsMobileMenuOpen(false);
-                    }}
-                    className="block text-sm text-foreground hover:text-primary transition-colors cursor-pointer"
-                  >
-                    {item.name}
-                  </a>
-                ))}
-              </div>
-            )}
-          </div>
-        </GlassSurface>
-      </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

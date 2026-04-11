@@ -1,132 +1,132 @@
 "use client";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { ExternalLink, Github } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { motion } from "framer-motion";
+import { ExternalLink, Github, Folder } from "lucide-react";
+
+const spring = { type: "spring" as const, stiffness: 50, damping: 18 };
 
 const projects = [
   {
     title: "E-Commerce Platform",
     description:
       "A full-stack e-commerce application with user authentication, product management, shopping cart, and payment integration using Stripe.",
-    image: "/modern-ecommerce-interface.png",
     tags: ["Next.js", "TypeScript", "PostgreSQL", "Stripe"],
     github: "https://github.com",
-    demo: "https://demo.com",
+    live: "https://demo.com",
   },
   {
     title: "Task Management App",
     description:
       "A collaborative task management tool with real-time updates, drag-and-drop functionality, and team collaboration features.",
-    image: "/task-management-dashboard.png",
     tags: ["React", "Node.js", "MongoDB", "Socket.io"],
     github: "https://github.com",
-    demo: "https://demo.com",
+    live: "https://demo.com",
   },
   {
     title: "Weather Dashboard",
     description:
       "An interactive weather dashboard that displays current conditions, forecasts, and historical data with beautiful visualizations.",
-    image: "/weather-dashboard.png",
     tags: ["React", "TypeScript", "Chart.js", "OpenWeather API"],
     github: "https://github.com",
-    demo: "https://demo.com",
+    live: "https://demo.com",
   },
   {
     title: "Social Media Analytics",
     description:
       "A data visualization tool that analyzes social media metrics and provides insights through interactive charts and graphs.",
-    image: "/analytics-dashboard-graphs.png",
     tags: ["Python", "Flask", "D3.js", "PostgreSQL"],
     github: "https://github.com",
-    demo: "https://demo.com",
   },
 ];
 
 export function Projects() {
-  const { ref, isVisible } = useScrollAnimation();
-
   return (
-    <section
-      id="projects"
-      ref={ref}
-      className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30"
-    >
+    <section id="projects" className="py-32 px-6 relative">
       <div className="max-w-6xl mx-auto">
-        <h2
-          className={`text-3xl sm:text-4xl font-bold mb-12 text-balance transition-all duration-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-          }`}
+        {/* Section label */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={spring}
+          className="flex items-center gap-4 mb-20"
         >
-          Featured Projects
-        </h2>
+          <span className="text-primary font-mono text-xs tracking-[0.3em] uppercase">
+            03 — Projects
+          </span>
+          <div className="h-px flex-1 bg-border max-w-xs" />
+        </motion.div>
 
+        <motion.h2
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ ...spring, delay: 0.05 }}
+          className="font-display text-4xl md:text-6xl font-extrabold leading-tight mb-16 max-w-3xl"
+        >
+          Things I&apos;ve{" "}
+          <span className="text-gradient">built</span>
+        </motion.h2>
+
+        {/* Project grid */}
         <div className="grid md:grid-cols-2 gap-6">
-          {projects.map((project, index) => (
-            <Card
-              key={index}
-              className={`overflow-hidden group hover:shadow-lg transition-all duration-700 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
-              style={{ transitionDelay: `${index * 150}ms` }}
+          {projects.map((project, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ ...spring, delay: i * 0.07 }}
+              className="glass-card rounded-2xl p-8 group hover:border-primary/30 transition-all flex flex-col"
             >
-              <div className="relative h-48 overflow-hidden bg-muted">
-                <img
-                  src={project.image || "/placeholder.svg"}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <CardHeader>
-                <CardTitle className="text-xl">{project.title}</CardTitle>
-                <CardDescription className="leading-relaxed">
-                  {project.description}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <Badge
-                      key={tag}
-                      variant="secondary"
-                      className="font-mono text-xs"
-                    >
-                      {tag}
-                    </Badge>
-                  ))}
+              <div className="flex items-center justify-between mb-6">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                  <Folder className="w-5 h-5 text-primary" />
                 </div>
-                <div className="flex gap-3">
-                  <Button size="sm" variant="outline" asChild>
+                <div className="flex items-center gap-3">
+                  {project.github && (
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-accent transition-colors"
+                      aria-label="GitHub"
                     >
-                      <Github className="h-4 w-4 mr-2" />
-                      Code
+                      <Github className="w-5 h-5" />
                     </a>
-                  </Button>
-                  <Button size="sm" asChild>
+                  )}
+                  {project.live && (
                     <a
-                      href={project.demo}
+                      href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-accent transition-colors"
+                      aria-label="Live demo"
                     >
-                      <ExternalLink className="h-4 w-4 mr-2" />
-                      Demo
+                      <ExternalLink className="w-5 h-5" />
                     </a>
-                  </Button>
+                  )}
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+
+              <h3 className="font-display font-bold text-xl text-foreground group-hover:text-primary transition-colors mb-3">
+                {project.title}
+              </h3>
+              <p className="text-secondary-foreground text-sm leading-relaxed mb-6 flex-1">
+                {project.description}
+              </p>
+
+              <div className="flex flex-wrap gap-2">
+                {project.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-xs font-mono bg-secondary px-3 py-1 rounded-md text-muted-foreground"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>
