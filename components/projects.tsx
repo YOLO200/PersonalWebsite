@@ -1,41 +1,58 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Github, Folder } from "lucide-react";
+import { ExternalLink, Folder } from "lucide-react";
 
 const spring = { type: "spring" as const, stiffness: 50, damping: 18 };
 
 const projects = [
   {
-    title: "E-Commerce Platform",
+    title: "Pono Pono Peace Initiative — Capstone",
     description:
-      "A full-stack e-commerce application with user authentication, product management, shopping cart, and payment integration using Stripe.",
-    tags: ["Next.js", "TypeScript", "PostgreSQL", "Stripe"],
-    github: "https://github.com",
-    live: "https://demo.com",
+      "Leading the redesign of a production nonprofit website with a focus on accessibility, responsive design, and ethical engineering practices. Designed and implemented modular frontend components with improved navigation and performance. Produced a technical risk and ethics assessment aligned with real-world deployment considerations.",
+    tags: ["Next.js", "TypeScript", "Accessibility", "Responsive Design"],
+    github: "https://github.com/skohli182/PonoPonoPeaceInitiative",
+    live: "",
   },
   {
-    title: "Task Management App",
+    title: "SaaS Platform for Dentists",
     description:
-      "A collaborative task management tool with real-time updates, drag-and-drop functionality, and team collaboration features.",
-    tags: ["React", "Node.js", "MongoDB", "Socket.io"],
-    github: "https://github.com",
-    live: "https://demo.com",
+      "A full-stack SaaS platform built for dental practices to manage patient records, appointments, treatment plans, and billing. Features role-based access, real-time updates, and an intuitive dashboard designed around clinical workflows.",
+    tags: ["Next.js", "Supabase", "PostgreSQL", "TypeScript"],
+    github: "https://github.com/YOLO200/CityDentalSoftware",
+    live: "",
   },
   {
-    title: "Weather Dashboard",
+    title: "Dental Tourism Website",
     description:
-      "An interactive weather dashboard that displays current conditions, forecasts, and historical data with beautiful visualizations.",
-    tags: ["React", "TypeScript", "Chart.js", "OpenWeather API"],
-    github: "https://github.com",
-    live: "https://demo.com",
+      "A marketing and booking website for a dental tourism company connecting international patients with dental clinics. Includes service listings, before/after galleries, cost comparison tools, and a lead capture system.",
+    tags: ["React", "Next.js", "Tailwind CSS", "TypeScript"],
+    github: "https://github.com/YOLO200/Dentaltourism",
+    live: "",
   },
   {
-    title: "Social Media Analytics",
+    title: "LLM Flame War Mediator",
     description:
-      "A data visualization tool that analyzes social media metrics and provides insights through interactive charts and graphs.",
-    tags: ["Python", "Flask", "D3.js", "PostgreSQL"],
-    github: "https://github.com",
+      "A two-stage NLP pipeline that uses LLMs to automatically mediate hostile Reddit flame wars. A Llama-3.2-3B mediator generates judgment and de-escalation messages, while a Qwen3-4B judge evaluates output quality using baseline, rule-augmented, and few-shot prompting strategies. Includes a linguistic aggression analysis comparing LLM mediation against human moderators and toxic continuations.",
+    tags: ["Python", "LLMs", "NLP", "Llama", "Qwen", "LLM-as-a-Judge"],
+    github: "https://github.com/YOLO200/Can-LLM-Serve-as-a-Mediator-in-Online-Flame-Wars-",
+    live: "https://docs.google.com/document/d/1543RLKyHFjtsZl8sqWgqhDzkpSp82b17aPELRiWV_fg/edit?usp=sharing",
+  },
+  {
+    title: "Sonic Evolution: How Music Has Changed Over Time",
+    description:
+      "An interactive scrollytelling web app that visualizes the evolution of popular music from the 1960s to today using D3.js and Spotify/Million Song datasets. Features 5 visualization techniques — line chart, stacked bar, scatterplot, bubble chart, and an innovative radial sound spectrum encoding energy, tempo, valence, and loudness — with scroll-triggered animations and decade-level filtering.",
+    tags: ["D3.js", "JavaScript", "Scrollama.js", "Python", "Data Visualization"],
+    github: "https://github.com/asu-cse478-f2025/Ashmit-Nathan-Sarjan-Yashvi",
+    live: "",
+  },
+  {
+    title: "Crunch — Financial Wellness for Gig Workers",
+    description:
+      "A financial resilience dashboard for gig economy workers that turns bank statement data into plain-English survival intelligence. Features a Financial Survival Score, AI-powered cash runway and tax exposure analysis, a Gemini-powered conversational coach, ElevenLabs text-to-speech, and full UI translation across 6 languages.",
+    tags: ["React", "TypeScript", "Gemini AI", "Groq", "ElevenLabs", "Tailwind CSS"],
+    github: "https://github.com/YOLO200/InnovationHacks_Statefarm",
+    live: "",
   },
 ];
 
@@ -92,7 +109,9 @@ export function Projects() {
                       className="text-muted-foreground hover:text-accent transition-colors"
                       aria-label="GitHub"
                     >
-                      <Github className="w-5 h-5" />
+                      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.605-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z" />
+                      </svg>
                     </a>
                   )}
                   {project.live && (

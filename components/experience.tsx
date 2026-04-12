@@ -7,28 +7,22 @@ const spring = { type: "spring" as const, stiffness: 50, damping: 18 };
 
 const experiences = [
   {
-    title: "AI / Software Engineering Intern",
-    company: "Unison",
-    period: "Summer 2025",
+    title: "Co-Founder",
+    company: "Sevasya – AI for Caregivers",
+    period: "May 2025 – Present",
     description:
-      "Built AI-driven features and full-stack web applications. Collaborated with cross-functional teams to ship production features impacting users at scale.",
-    tags: ["React", "Node.js", "OpenAI", "AWS"],
+      "Co-built and deployed a cloud-native AI caregiving assistant supporting automated wellness/medication reminder calls, caregiver messaging, and compliance tracking. Designed a serverless scheduling system using Supabase Edge Functions + cron batching, reducing infrastructure cost by ~60%. Implemented idempotency checks, retries, and failure handling across event-driven webhooks, cutting duplicate scheduling and dropped calls by ~40%. Integrated OpenAI-powered post-call processing to generate structured summaries and actionable caregiver insights, reducing manual follow-up time by ~30%. Developed an AI voice agent and chatbot with memory-aware retrieval (RAG) backed by PostgreSQL + pgvector.",
+    tags: ["Supabase", "OpenAI", "RAG", "PostgreSQL", "pgvector", "Voice AI"],
+    href: "https://github.com/YOLO200/SeniorCare",
   },
   {
     title: "Software Engineering Intern",
-    company: "Digimarc",
-    period: "Summer 2024",
+    company: "MoveCars.com",
+    period: "January 2025 – May 2025",
+    href: "https://www.movecars.com",
     description:
-      "Developed responsive interfaces and integrated REST APIs. Improved application performance through code optimization and modern front-end practices.",
-    tags: ["TypeScript", "REST APIs", "Performance"],
-  },
-  {
-    title: "Teaching Assistant",
-    company: "Arizona State University",
-    period: "Fall 2024 – Present",
-    description:
-      "Mentored students in introductory CS and data structures courses. Led review sessions and created supplementary learning materials.",
-    tags: ["Python", "Mentoring", "Curriculum"],
+      "Shipped full-stack features in React + Ruby on Rails with REST APIs and AWS services. Improved frontend performance and accessibility, increasing Core Web Vitals scores by ~15% through code optimization and best practices. Participated in Agile sprints, code reviews, and CI/CD workflows, contributing to fast and reliable releases. Collaborated with cross-functional teams to debug production issues and deliver customer-facing improvements.",
+    tags: ["React", "Ruby on Rails", "REST APIs", "AWS", "CI/CD"],
   },
 ];
 
@@ -79,7 +73,8 @@ export function Experience() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ ...spring, delay: i * 0.07 }}
-              className="glass-card rounded-2xl p-8 group hover:border-primary/30 transition-all cursor-default"
+              className={`glass-card rounded-2xl p-8 group hover:border-primary/30 transition-all ${exp.href ? "cursor-pointer" : "cursor-default"}`}
+              onClick={() => exp.href && window.open(exp.href, "_blank", "noopener,noreferrer")}
             >
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
                 <div className="flex items-start gap-4">
