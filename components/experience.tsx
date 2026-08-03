@@ -7,9 +7,17 @@ const spring = { type: "spring" as const, stiffness: 50, damping: 18 };
 
 const experiences = [
   {
+    title: "Business Innovation Intern",
+    company: "M S International, Inc. (MSI)",
+    period: "July 2026 – Present",
+    description:
+      "Building an internal AI agent that answers business questions asked in plain English, generating and executing queries against the company's enterprise semantic model and returning results in natural language. Designed a validation layer that checks generated queries against live model metadata before execution, catching malformed and hallucinated output rather than returning plausible but incorrect answers. Implemented delegated authentication with persistent token caching and row-level security handling, so results are scoped to each user's data permissions.",
+    tags: ["AI Agents", "Semantic Model", "Query Validation", "OAuth", "Row-Level Security"],
+  },
+  {
     title: "Co-Founder",
     company: "Sevasya – AI for Caregivers",
-    period: "May 2025 – Present",
+    period: "May 2025 – January 2026",
     description:
       "Co-built and deployed a cloud-native AI caregiving assistant supporting automated wellness/medication reminder calls, caregiver messaging, and compliance tracking. Designed a serverless scheduling system using Supabase Edge Functions + cron batching, reducing infrastructure cost by ~60%. Implemented idempotency checks, retries, and failure handling across event-driven webhooks, cutting duplicate scheduling and dropped calls by ~40%. Integrated OpenAI-powered post-call processing to generate structured summaries and actionable caregiver insights, reducing manual follow-up time by ~30%. Developed an AI voice agent and chatbot with memory-aware retrieval (RAG) backed by PostgreSQL + pgvector.",
     tags: ["Supabase", "OpenAI", "RAG", "PostgreSQL", "pgvector", "Voice AI"],
@@ -29,10 +37,10 @@ const experiences = [
 const skills = [
   "JavaScript", "TypeScript", "React", "Next.js",
   "Python", "Java", "C++", "SQL",
-  "Node.js", "Express", "Django", "Flask",
-  "PostgreSQL", "MongoDB", "Redis", "Git",
-  "Docker", "AWS", "Vercel", "Tailwind CSS",
-  "OpenAI", "Supabase", "Vue.js", "Figma",
+  "Node.js", "PostgreSQL", "Git", "AWS",
+  "Vercel", "Tailwind CSS", "OpenAI", "Supabase",
+  "Figma", "Ruby on Rails", "D3.js", "pgvector",
+  "OAuth", "Gemini AI", "Groq", "ElevenLabs", "Llama", "Qwen",
 ];
 
 export function Experience() {

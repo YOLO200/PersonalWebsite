@@ -96,7 +96,7 @@ export function Hero() {
           className="text-muted-foreground text-lg md:text-xl max-w-xl mx-auto mb-12 font-body leading-relaxed"
         >
           Building intelligent, human-centered digital experiences with clean code and bold ideas.
-          AI Engineer & Software Developer @ Arizona State University.
+          AI Engineer & Software Developer @ M S International (MSI).
         </motion.p>
 
         <motion.div
