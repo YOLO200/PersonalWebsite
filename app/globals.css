@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=Syne:wght@700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=Syne:wght@700;800&display=swap");
 
 @custom-variant dark (&:is(.dark *));
 
@@ -9,64 +9,64 @@ html {
 }
 
 :root {
-  --background: oklch(0.11 0.020 272);
-  --foreground: oklch(0.92 0.020 286);
+  --background: oklch(0.11 0.02 272);
+  --foreground: oklch(0.92 0.02 286);
   --card: oklch(0.14 0.018 272);
-  --card-foreground: oklch(0.92 0.020 286);
+  --card-foreground: oklch(0.92 0.02 286);
   --popover: oklch(0.14 0.018 272);
-  --popover-foreground: oklch(0.92 0.020 286);
-  --primary: oklch(0.54 0.270 263);
+  --popover-foreground: oklch(0.92 0.02 286);
+  --primary: oklch(0.54 0.27 263);
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.20 0.016 272);
+  --secondary: oklch(0.2 0.016 272);
   --secondary-foreground: oklch(0.86 0.018 286);
   --muted: oklch(0.17 0.016 272);
   --muted-foreground: oklch(0.52 0.012 272);
   --accent: oklch(0.79 0.195 320);
-  --accent-foreground: oklch(0.11 0.020 272);
+  --accent-foreground: oklch(0.11 0.02 272);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
   --border: oklch(0.23 0.018 272);
   --input: oklch(0.23 0.018 272);
-  --ring: oklch(0.54 0.270 263);
+  --ring: oklch(0.54 0.27 263);
   --radius: 0.75rem;
   --sidebar: oklch(0.14 0.018 272);
-  --sidebar-foreground: oklch(0.92 0.020 286);
-  --sidebar-primary: oklch(0.54 0.270 263);
+  --sidebar-foreground: oklch(0.92 0.02 286);
+  --sidebar-primary: oklch(0.54 0.27 263);
   --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.20 0.016 272);
-  --sidebar-accent-foreground: oklch(0.92 0.020 286);
+  --sidebar-accent: oklch(0.2 0.016 272);
+  --sidebar-accent-foreground: oklch(0.92 0.02 286);
   --sidebar-border: oklch(0.23 0.018 272);
-  --sidebar-ring: oklch(0.54 0.270 263);
+  --sidebar-ring: oklch(0.54 0.27 263);
 }
 
 .dark {
-  --background: oklch(0.11 0.020 272);
-  --foreground: oklch(0.92 0.020 286);
+  --background: oklch(0.11 0.02 272);
+  --foreground: oklch(0.92 0.02 286);
   --card: oklch(0.14 0.018 272);
-  --card-foreground: oklch(0.92 0.020 286);
+  --card-foreground: oklch(0.92 0.02 286);
   --popover: oklch(0.14 0.018 272);
-  --popover-foreground: oklch(0.92 0.020 286);
-  --primary: oklch(0.54 0.270 263);
+  --popover-foreground: oklch(0.92 0.02 286);
+  --primary: oklch(0.54 0.27 263);
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.20 0.016 272);
+  --secondary: oklch(0.2 0.016 272);
   --secondary-foreground: oklch(0.86 0.018 286);
   --muted: oklch(0.17 0.016 272);
   --muted-foreground: oklch(0.52 0.012 272);
   --accent: oklch(0.79 0.195 320);
-  --accent-foreground: oklch(0.11 0.020 272);
+  --accent-foreground: oklch(0.11 0.02 272);
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(0.637 0.237 25.331);
   --border: oklch(0.23 0.018 272);
   --input: oklch(0.23 0.018 272);
-  --ring: oklch(0.54 0.270 263);
+  --ring: oklch(0.54 0.27 263);
   --sidebar: oklch(0.14 0.018 272);
-  --sidebar-foreground: oklch(0.92 0.020 286);
-  --sidebar-primary: oklch(0.54 0.270 263);
+  --sidebar-foreground: oklch(0.92 0.02 286);
+  --sidebar-primary: oklch(0.54 0.27 263);
   --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.20 0.016 272);
-  --sidebar-accent-foreground: oklch(0.92 0.020 286);
+  --sidebar-accent: oklch(0.2 0.016 272);
+  --sidebar-accent-foreground: oklch(0.92 0.02 286);
   --sidebar-border: oklch(0.23 0.018 272);
-  --sidebar-ring: oklch(0.54 0.270 263);
+  --sidebar-ring: oklch(0.54 0.27 263);
 }
 
 @theme inline {
@@ -101,9 +101,9 @@ html {
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --font-display: 'Syne', 'Space Grotesk', sans-serif;
-  --font-body: 'DM Sans', sans-serif;
-  --font-mono: 'Space Grotesk', monospace;
+  --font-display: "Syne", "Space Grotesk", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+  --font-mono: "Space Grotesk", monospace;
   --animate-marquee: marquee 30s linear infinite;
 }
 
@@ -115,7 +115,12 @@ html {
     @apply bg-background text-foreground;
     font-family: var(--font-body);
   }
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-display);
   }
 }
@@ -125,7 +130,12 @@ html {
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
-    background-image: linear-gradient(135deg, var(--color-primary), var(--color-accent), var(--color-primary));
+    background-image: linear-gradient(
+      135deg,
+      var(--color-primary),
+      var(--color-accent),
+      var(--color-primary)
+    );
     background-size: 200% 200%;
     animation: gradient-shift 4s ease infinite;
   }
@@ -136,7 +146,8 @@ html {
   }
 
   .glow-primary {
-    box-shadow: 0 0 40px -10px color-mix(in oklch, var(--color-primary) 30%, transparent);
+    box-shadow: 0 0 40px -10px
+      color-mix(in oklch, var(--color-primary) 30%, transparent);
   }
 
   .dot-pattern {
@@ -164,13 +175,22 @@ html {
 }
 
 @keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 /* ------------------------------------------------------------------
@@ -252,16 +272,29 @@ html[data-season="summer"] {
   --particle-secondary: 45 100% 58%;
 }
 
-html[data-season] body { transition: background-color 0.5s, color 0.5s; }
+html[data-season] body {
+  transition:
+    background-color 0.5s,
+    color 0.5s;
+}
 
 /* Layering: page background & hero scenery (auto) < particles (1) < content (2+).
    Content sections are transparent, so particles show between text and cards
    but never over them. The hero is not lifted so its scenery stays below the
    particles; its text, picker and arrow already sit at z-10. */
-.season-particles { z-index: 1; }
-main > section[id] { position: relative; z-index: 2; }
+.season-particles {
+  z-index: 1;
+}
+main > section[id] {
+  position: relative;
+  z-index: 2;
+}
 
-.season-hero { min-height: 680px; height: 90svh; max-height: 980px; }
+.season-hero {
+  min-height: 680px;
+  height: 90svh;
+  max-height: 980px;
+}
 /* Hero scenery: CSS backgrounds so only the active season's photo is fetched on load.
    The other three are fetched once <html> gets .seasons-ready (after page load),
    which keeps season switching a smooth cross-fade. */
@@ -272,43 +305,88 @@ main > section[id] { position: relative; z-index: 2; }
   background-repeat: no-repeat;
   background-position: center bottom;
 }
-.season-landscape[data-scenery="spring"] { --scenery: url("/seasons/spring-riverside.jpg"); }
-.season-landscape[data-scenery="summer"] { --scenery: url("/seasons/summer-riverside.jpg"); }
-.season-landscape[data-scenery="autumn"] { --scenery: url("/seasons/autumn-riverside.jpg"); background-position: right bottom; }
-.season-landscape[data-scenery="winter"] { --scenery: url("/seasons/winter-riverside.jpg"); }
-@media (max-width: 960px) {
-  .season-landscape[data-scenery="spring"] { --scenery: url("/seasons/spring-riverside-960.jpg"); }
-  .season-landscape[data-scenery="summer"] { --scenery: url("/seasons/summer-riverside-960.jpg"); }
-  .season-landscape[data-scenery="autumn"] { --scenery: url("/seasons/autumn-riverside-960.jpg"); }
-  .season-landscape[data-scenery="winter"] { --scenery: url("/seasons/winter-riverside-960.jpg"); }
+.season-landscape[data-scenery="spring"] {
+  --scenery: url("/seasons/spring-riverside.jpg");
+}
+.season-landscape[data-scenery="summer"] {
+  --scenery: url("/seasons/summer-riverside.jpg");
+}
+.season-landscape[data-scenery="autumn"] {
+  --scenery: url("/seasons/autumn-riverside.jpg");
+  background-position: right bottom;
+}
+.season-landscape[data-scenery="winter"] {
+  --scenery: url("/seasons/winter-riverside.jpg");
 }
 html.seasons-ready .season-landscape,
 html[data-season="spring"] .season-landscape[data-scenery="spring"],
 html[data-season="summer"] .season-landscape[data-scenery="summer"],
 html[data-season="autumn"] .season-landscape[data-scenery="autumn"],
-html[data-season="winter"] .season-landscape[data-scenery="winter"] { background-image: var(--scenery); }
+html[data-season="winter"] .season-landscape[data-scenery="winter"] {
+  background-image: var(--scenery);
+}
 html[data-season="spring"] .season-landscape[data-scenery="spring"],
 html[data-season="summer"] .season-landscape[data-scenery="summer"],
 html[data-season="autumn"] .season-landscape[data-scenery="autumn"],
-html[data-season="winter"] .season-landscape[data-scenery="winter"] { opacity: 1; }
-.season-veil { background: color-mix(in srgb, var(--background) 13%, transparent); }
+html[data-season="winter"] .season-landscape[data-scenery="winter"] {
+  opacity: 1;
+}
+.season-veil {
+  background: color-mix(in srgb, var(--background) 13%, transparent);
+}
 html[data-season] .text-gradient {
   background-image: linear-gradient(120deg, var(--primary), var(--accent));
   background-size: 100% 100%;
   animation: none;
 }
-html[data-season] section[id] { scroll-margin-top: 75px; }
-html[data-season] [class*="tracking-"] { letter-spacing: 0; }
+html[data-season] section[id] {
+  scroll-margin-top: 75px;
+}
+html[data-season] [class*="tracking-"] {
+  letter-spacing: 0;
+}
 
 @media (max-width: 640px) {
-  .season-hero { min-height: 660px; height: 92svh; }
-  .season-landscape { background-size: 100% 100%; }
-  .season-veil { background: color-mix(in srgb, var(--background) 30%, transparent); }
-  .season-picker { gap: 0; }
-  .season-picker button { padding-inline: 9px; gap: 5px; }
+  .season-hero {
+    min-height: 660px;
+    height: 92svh;
+  }
+  /* Zoom (cover) instead of stretching; frame the tree, fence and path. */
+  .season-landscape,
+  .season-landscape[data-scenery="autumn"] {
+    background-size: cover;
+    background-position: 85% center;
+  }
+  .season-veil {
+    background: color-mix(in srgb, var(--background) 30%, transparent);
+  }
+  /* Soft background-colored halo so the gradient surname reads over busy foliage.
+     drop-shadow (not text-shadow) because the gradient is clipped to the text. */
+  .hero-surname {
+    filter: drop-shadow(
+        0 0 6px color-mix(in srgb, var(--background) 70%, transparent)
+      )
+      drop-shadow(
+        0 0 2px color-mix(in srgb, var(--background) 60%, transparent)
+      );
+  }
+  .season-picker {
+    gap: 0;
+  }
+  .season-picker button {
+    padding-inline: 9px;
+    gap: 5px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }

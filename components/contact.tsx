@@ -54,14 +54,14 @@ export function Contact() {
               {
                 icon: Mail,
                 label: "Email",
-                value: "yjasani@asu.edu",
-                href: "mailto:yjasani@asu.edu",
+                value: "yashvi8jasani@gmail.com",
+                href: "mailto:yashvi8jasani@gmail.com",
               },
               {
                 icon: Link2,
                 label: "GitHub",
-                value: "github.com/yashvijasani",
-                href: "https://github.com/yashvijasani",
+                value: "github.com/YOLO200",
+                href: "https://github.com/YOLO200",
               },
               {
                 icon: UserRound,

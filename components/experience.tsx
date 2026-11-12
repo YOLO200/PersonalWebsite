@@ -9,9 +9,9 @@ const experiences = [
   {
     title: "Business Innovation Intern",
     company: "M S International, Inc. (MSI)",
-    period: "July 2026 – Present",
+    period: "July 2026 – October 2026",
     description:
-      "Building an internal AI agent that answers business questions asked in plain English, generating and executing queries against the company's enterprise semantic model and returning results in natural language. Designed a validation layer that checks generated queries against live model metadata before execution, catching malformed and hallucinated output rather than returning plausible but incorrect answers. Implemented delegated authentication with persistent token caching and row-level security handling, so results are scoped to each user's data permissions.",
+      "Built an internal AI agent that answers business questions asked in plain English, generating and executing queries against the company's enterprise semantic model and returning results in natural language. Designed a validation layer that checks generated queries against live model metadata before execution, catching malformed and hallucinated output rather than returning plausible but incorrect answers. Implemented delegated authentication with persistent token caching and row-level security handling, so results are scoped to each user's data permissions.",
     tags: ["AI Agents", "Semantic Model", "Query Validation", "OAuth", "Row-Level Security"],
   },
   {
@@ -100,7 +100,9 @@ export function Experience() {
                   <span className="text-xs font-mono tracking-wider text-primary/80 bg-primary/5 px-3 py-1 rounded-full">
                     {exp.period}
                   </span>
-                  <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                  {exp.href && (
+                    <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                  )}
                 </div>
               </div>
               <p className="text-secondary-foreground text-sm leading-relaxed ml-14 mb-4">

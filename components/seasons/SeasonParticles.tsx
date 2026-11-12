@@ -111,7 +111,11 @@ export default function SeasonParticles({ pageWide = false }: { pageWide?: boole
     const observer = new ResizeObserver(resize);
     observer.observe(canvas);
     if (pageWide && canvas.parentElement) observer.observe(canvas.parentElement);
-    const count = pageWide ? Math.ceil((season === "winter" ? 48 : season === "summer" ? 40 : 24) * fallingHeight / 900) : 24;
+    // Count per 900px of height at desktop width, scaled by screen width so the
+    // density per area stays similar: a 390px phone gets ~1/3 of desktop's count.
+    const perScreen = season === "winter" ? 48 : season === "summer" ? 40 : 24;
+    const widthScale = Math.min(1, Math.max(0.3, width / 1280));
+    const count = Math.ceil(perScreen * widthScale * (pageWide ? fallingHeight / 900 : 1));
     const particles = Array.from({ length: count }, (_, index) => ({
       x: Math.random() * width, y: Math.random() * fallingHeight,
       size: season === "autumn" ? 14 + Math.random() * 22 : season === "winter" ? (index % 3 === 0 ? 12 + Math.random() * 12 : 2 + Math.random() * 5) : season === "spring" ? 7 + Math.random() * 10 : index % 4 === 0 ? 10 + Math.random() * 6 : 3 + Math.random() * 3,

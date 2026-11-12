@@ -82,7 +82,7 @@ export function Hero() {
               </motion.span>
             ))}
           </span>
-          <span className="block overflow-hidden text-gradient">
+          <span className="hero-surname block overflow-hidden text-gradient">
             {lastName.split("").map((char, i) => (
               <motion.span
                 key={`l-${i}`}
@@ -105,7 +105,7 @@ export function Hero() {
           className="text-secondary-foreground text-base md:text-lg max-w-xl mx-auto mb-10 font-body leading-relaxed"
         >
           Building intelligent, human-centered digital experiences with clean code and bold ideas.
-          AI Engineer & Software Developer @ M S International (MSI).
+          AI Engineer & Software Developer.
         </motion.p>
 
         <motion.div

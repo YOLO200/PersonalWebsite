@@ -43,7 +43,7 @@ const projects = [
     description:
       "An interactive scrollytelling web app that visualizes the evolution of popular music from the 1960s to today using D3.js and Spotify/Million Song datasets. Features 5 visualization techniques — line chart, stacked bar, scatterplot, bubble chart, and an innovative radial sound spectrum encoding energy, tempo, valence, and loudness — with scroll-triggered animations and decade-level filtering.",
     tags: ["D3.js", "JavaScript", "Scrollama.js", "Python", "Data Visualization"],
-    github: "https://github.com/asu-cse478-f2025/Ashmit-Nathan-Sarjan-Yashvi",
+    github: "",
     live: "",
   },
   {

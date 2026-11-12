@@ -46,9 +46,9 @@ export function About() {
             </p>
             <p className="text-muted-foreground leading-relaxed">
               I recently graduated from Arizona State University with my
-              Computer Science degree and am now interning at M S International
-              (MSI), where I'm building AI-driven tools that make enterprise
-              data easier to work with. My focus is on creating scalable,
+              Computer Science degree and most recently interned at M S
+              International (MSI), where I built AI-driven tools that make
+              enterprise data easier to work with. My focus is on creating scalable,
               meaningful products that make technology feel effortless.
             </p>
 
