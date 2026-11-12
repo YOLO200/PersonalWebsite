@@ -5,6 +5,7 @@ import { GeistMono } from "geist/font/mono";
 import { Analytics } from "@vercel/analytics/next";
 import { Suspense } from "react";
 import "./globals.css";
+import { seasonInitScript } from "@/components/seasons/types";
 
 export const metadata: Metadata = {
   title: {
@@ -110,8 +111,9 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className="dark">
+    <html lang="en" data-season="autumn" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: seasonInitScript }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

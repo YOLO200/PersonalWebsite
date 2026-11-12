@@ -1,7 +1,30 @@
 "use client";
 
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown, Sparkles } from "lucide-react";
+import SeasonPicker from "@/components/seasons/SeasonPicker";
+import { SEASONS } from "@/components/seasons/types";
+
+/** After the page has loaded, let the browser fetch the other seasons' scenery. */
+function usePreloadOtherScenery() {
+  useEffect(() => {
+    let idleId: number | undefined;
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+    const markReady = () => document.documentElement.classList.add("seasons-ready");
+    const schedule = () => {
+      if ("requestIdleCallback" in window) idleId = window.requestIdleCallback(markReady, { timeout: 4000 });
+      else timeoutId = setTimeout(markReady, 1500);
+    };
+    if (document.readyState === "complete") schedule();
+    else window.addEventListener("load", schedule, { once: true });
+    return () => {
+      window.removeEventListener("load", schedule);
+      if (idleId !== undefined) window.cancelIdleCallback(idleId);
+      if (timeoutId !== undefined) clearTimeout(timeoutId);
+    };
+  }, []);
+}
 
 const firstName = "Yashvi";
 const lastName = "Jasani";
@@ -21,31 +44,17 @@ const charVariants = {
 };
 
 export function Hero() {
+  usePreloadOtherScenery();
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
-      {/* Decorative background */}
-      <div className="absolute inset-0 dot-pattern opacity-40" />
-      <div className="absolute top-0 right-0 w-1/2 h-full line-pattern opacity-20" />
+    <section className="season-hero relative flex flex-col items-center justify-center px-6 overflow-hidden">
+      {/* Seasonal scenery: which layer shows (and which photo downloads) is decided
+          by CSS from <html data-season>, so it is correct before React hydrates. */}
+      {SEASONS.map((name) => (
+        <div key={name} aria-hidden="true" data-scenery={name} className="season-landscape absolute inset-0" />
+      ))}
+      <div className="season-veil absolute inset-0" />
 
-      {/* Floating orbs */}
-      <motion.div
-        className="absolute top-20 right-[15%] w-72 h-72 rounded-full blur-[100px]"
-        style={{ backgroundColor: "color-mix(in oklch, var(--color-primary) 5%, transparent)" }}
-        animate={{ y: [-10, 20, -10], x: [-5, 10, -5] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute bottom-20 left-[10%] w-96 h-96 rounded-full blur-[120px]"
-        style={{ backgroundColor: "color-mix(in oklch, var(--color-accent) 5%, transparent)" }}
-        animate={{ y: [10, -20, 10], x: [5, -10, 5] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-      />
-
-      {/* Corner decorative elements */}
-      <div className="absolute top-8 left-8 w-20 h-20 border-l-2 border-t-2 border-primary/20 rounded-tl-xl" />
-      <div className="absolute bottom-8 right-8 w-20 h-20 border-r-2 border-b-2 border-primary/20 rounded-br-xl" />
-
-      <div className="relative z-10 text-center max-w-5xl">
+      <div className="relative z-10 text-center max-w-5xl pt-24 pb-32">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -58,7 +67,7 @@ export function Hero() {
           </span>
         </motion.div>
 
-        <h1 className="font-display text-6xl md:text-8xl lg:text-9xl font-extrabold leading-[0.9] mb-4">
+        <h1 className="font-display text-5xl sm:text-7xl lg:text-8xl font-extrabold leading-[0.9] mb-4">
           <span className="block overflow-hidden">
             {firstName.split("").map((char, i) => (
               <motion.span
@@ -93,7 +102,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.8 }}
-          className="text-muted-foreground text-lg md:text-xl max-w-xl mx-auto mb-12 font-body leading-relaxed"
+          className="text-secondary-foreground text-base md:text-lg max-w-xl mx-auto mb-10 font-body leading-relaxed"
         >
           Building intelligent, human-centered digital experiences with clean code and bold ideas.
           AI Engineer & Software Developer @ M S International (MSI).
@@ -103,7 +112,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 1 }}
-          className="flex gap-4 justify-center"
+          className="flex flex-wrap gap-4 justify-center"
         >
           <a
             href="#experience"
@@ -120,12 +129,16 @@ export function Hero() {
         </motion.div>
       </div>
 
+      <div className="absolute bottom-16 z-10 max-w-[calc(100%-2rem)]">
+        <SeasonPicker />
+      </div>
+
       <motion.a
         href="#about"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-primary transition-colors"
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 text-foreground/70 hover:text-primary transition-colors"
       >
         <ArrowDown className="w-5 h-5 animate-bounce" />
       </motion.a>

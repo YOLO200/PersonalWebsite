@@ -1,8 +1,7 @@
 # Dependencies
 node_modules/
 
-# Package manager locks
-package-lock.json
+# Package manager locks (this project uses npm; package-lock.json is committed)
 yarn.lock
 pnpm-lock.yaml
 

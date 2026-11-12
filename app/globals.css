@@ -172,3 +172,143 @@ html {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+
+/* ------------------------------------------------------------------
+   Seasonal palettes (values from the Lovable reference, index.css).
+   The season is set on <html data-season="..."> before paint.
+   Autumn is the base; other seasons override it.
+   ------------------------------------------------------------------ */
+html[data-season] {
+  --background: hsl(35 60% 97%);
+  --foreground: hsl(12 32% 16%);
+  --card: hsl(36 65% 99%);
+  --card-foreground: var(--foreground);
+  --popover: var(--card);
+  --popover-foreground: var(--foreground);
+  --primary: hsl(8 68% 37%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(31 43% 91%);
+  --secondary-foreground: hsl(16 28% 25%);
+  --muted: hsl(30 35% 93%);
+  --muted-foreground: hsl(16 19% 38%);
+  --accent: hsl(35 83% 37%);
+  --accent-foreground: hsl(0 0% 100%);
+  --border: hsl(25 29% 79%);
+  --input: var(--border);
+  --ring: var(--primary);
+  --sidebar: var(--card);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--secondary);
+  --sidebar-accent-foreground: var(--foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--primary);
+  /* bare HSL components so canvas code can write hsl(var / alpha) */
+  --particle: 12 75% 42%;
+  --particle-secondary: 38 95% 48%;
+  --radius: 0.5rem;
+}
+html[data-season="winter"] {
+  --background: hsl(200 44% 97%);
+  --foreground: hsl(205 37% 16%);
+  --card: hsl(200 50% 99%);
+  --primary: hsl(197 64% 30%);
+  --secondary: hsl(203 38% 91%);
+  --secondary-foreground: hsl(206 30% 25%);
+  --muted: hsl(202 38% 93%);
+  --muted-foreground: hsl(207 22% 38%);
+  --accent: hsl(265 31% 44%);
+  --border: hsl(204 27% 79%);
+  --particle: 0 0% 100%;
+  --particle-secondary: 210 60% 94%;
+}
+html[data-season="spring"] {
+  --background: hsl(335 48% 98%);
+  --foreground: hsl(335 25% 18%);
+  --card: hsl(335 55% 99%);
+  --primary: hsl(337 56% 39%);
+  --secondary: hsl(335 33% 93%);
+  --secondary-foreground: hsl(335 22% 28%);
+  --muted: hsl(335 35% 95%);
+  --muted-foreground: hsl(335 16% 39%);
+  --accent: hsl(147 38% 32%);
+  --border: hsl(335 26% 83%);
+  --particle: 339 74% 66%;
+  --particle-secondary: 350 81% 80%;
+}
+html[data-season="summer"] {
+  --background: hsl(158 40% 97%);
+  --foreground: hsl(166 38% 15%);
+  --card: hsl(160 50% 99%);
+  --primary: hsl(166 61% 26%);
+  --secondary: hsl(159 29% 91%);
+  --secondary-foreground: hsl(168 31% 25%);
+  --muted: hsl(160 29% 93%);
+  --muted-foreground: hsl(166 22% 36%);
+  --accent: hsl(34 83% 33%);
+  --border: hsl(158 25% 79%);
+  --particle: 32 98% 54%;
+  --particle-secondary: 45 100% 58%;
+}
+
+html[data-season] body { transition: background-color 0.5s, color 0.5s; }
+
+/* Layering: page background & hero scenery (auto) < particles (1) < content (2+).
+   Content sections are transparent, so particles show between text and cards
+   but never over them. The hero is not lifted so its scenery stays below the
+   particles; its text, picker and arrow already sit at z-10. */
+.season-particles { z-index: 1; }
+main > section[id] { position: relative; z-index: 2; }
+
+.season-hero { min-height: 680px; height: 90svh; max-height: 980px; }
+/* Hero scenery: CSS backgrounds so only the active season's photo is fetched on load.
+   The other three are fetched once <html> gets .seasons-ready (after page load),
+   which keeps season switching a smooth cross-fade. */
+.season-landscape {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+}
+.season-landscape[data-scenery="spring"] { --scenery: url("/seasons/spring-riverside.jpg"); }
+.season-landscape[data-scenery="summer"] { --scenery: url("/seasons/summer-riverside.jpg"); }
+.season-landscape[data-scenery="autumn"] { --scenery: url("/seasons/autumn-riverside.jpg"); background-position: right bottom; }
+.season-landscape[data-scenery="winter"] { --scenery: url("/seasons/winter-riverside.jpg"); }
+@media (max-width: 960px) {
+  .season-landscape[data-scenery="spring"] { --scenery: url("/seasons/spring-riverside-960.jpg"); }
+  .season-landscape[data-scenery="summer"] { --scenery: url("/seasons/summer-riverside-960.jpg"); }
+  .season-landscape[data-scenery="autumn"] { --scenery: url("/seasons/autumn-riverside-960.jpg"); }
+  .season-landscape[data-scenery="winter"] { --scenery: url("/seasons/winter-riverside-960.jpg"); }
+}
+html.seasons-ready .season-landscape,
+html[data-season="spring"] .season-landscape[data-scenery="spring"],
+html[data-season="summer"] .season-landscape[data-scenery="summer"],
+html[data-season="autumn"] .season-landscape[data-scenery="autumn"],
+html[data-season="winter"] .season-landscape[data-scenery="winter"] { background-image: var(--scenery); }
+html[data-season="spring"] .season-landscape[data-scenery="spring"],
+html[data-season="summer"] .season-landscape[data-scenery="summer"],
+html[data-season="autumn"] .season-landscape[data-scenery="autumn"],
+html[data-season="winter"] .season-landscape[data-scenery="winter"] { opacity: 1; }
+.season-veil { background: color-mix(in srgb, var(--background) 13%, transparent); }
+html[data-season] .text-gradient {
+  background-image: linear-gradient(120deg, var(--primary), var(--accent));
+  background-size: 100% 100%;
+  animation: none;
+}
+html[data-season] section[id] { scroll-margin-top: 75px; }
+html[data-season] [class*="tracking-"] { letter-spacing: 0; }
+
+@media (max-width: 640px) {
+  .season-hero { min-height: 660px; height: 92svh; }
+  .season-landscape { background-size: 100% 100%; }
+  .season-veil { background: color-mix(in srgb, var(--background) 30%, transparent); }
+  .season-picker { gap: 0; }
+  .season-picker button { padding-inline: 9px; gap: 5px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

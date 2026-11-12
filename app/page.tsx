@@ -4,6 +4,7 @@ import { About } from "@/components/about";
 import { Experience } from "@/components/experience";
 import { Projects } from "@/components/projects";
 import { Contact } from "@/components/contact";
+import SeasonParticles from "@/components/seasons/SeasonParticles";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         <Projects />
         <Contact />
       </main>
+      <SeasonParticles pageWide />
     </div>
   );
 }
