@@ -21,7 +21,6 @@ const experiences = [
     description:
       "Co-built and deployed a cloud-native AI caregiving assistant supporting automated wellness/medication reminder calls, caregiver messaging, and compliance tracking. Designed a serverless scheduling system using Supabase Edge Functions + cron batching, reducing infrastructure cost by ~60%. Implemented idempotency checks, retries, and failure handling across event-driven webhooks, cutting duplicate scheduling and dropped calls by ~40%. Integrated OpenAI-powered post-call processing to generate structured summaries and actionable caregiver insights, reducing manual follow-up time by ~30%. Developed an AI voice agent and chatbot with memory-aware retrieval (RAG) backed by PostgreSQL + pgvector.",
     tags: ["Supabase", "OpenAI", "RAG", "PostgreSQL", "pgvector", "Voice AI"],
-    href: "https://github.com/YOLO200/SeniorCare",
   },
   {
     title: "Software Engineering Intern",
